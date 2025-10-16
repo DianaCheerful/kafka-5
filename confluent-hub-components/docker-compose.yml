@@ -96,7 +96,7 @@ services:
       CONNECT_PLUGIN_PATH: /kafka-connect/jars
 
     volumes:
-      - ./kafka-connect/:/kafka-connect/jars
+      - ./kafka-connect/jars/:/kafka-connect/jars
     networks:
       - proxynet
 
