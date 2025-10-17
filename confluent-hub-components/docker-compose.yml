@@ -11,12 +11,12 @@ services:
       KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://kafka-0:9092,EXTERNAL://127.0.0.1:9094  # Адреса, которые Kafka "рекламирует" наружу
       KAFKA_ENABLE_KRAFT: yes                          # Включение режима KRaft (Kafka без Zookeeper)
       ALLOW_PLAINTEXT_LISTENER: yes                    # Разрешение незашифрованных подключений
-      KAFKA_KRAFT_CLUSTER_ID: practicum                # Уникальный идентификатор KRaft-кластера (задан один раз при первом запуске)
+      KAFKA_KRAFT_CLUSTER_ID: N2Q0ZTNlMWFhMTgyNDhiZj                # Уникальный идентификатор KRaft-кластера (задан один раз при первом запуске)
       KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: "CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT"  # Протоколы для разных типов слушателей
       KAFKA_CFG_PROCESS_ROLES: broker,controller       # Роль узла: одновременно брокер и контроллер метаданных
       KAFKA_CFG_CONTROLLER_LISTENER_NAMES: CONTROLLER  # Контроллер использует listener CONTROLLER (для внутреннего кворума метаданных)
       KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: 0@kafka-0:9093  # Участники кворума контроллеров
-      KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE: false       # Отключить автосоздание топиков
+      KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE: false
     volumes:
       - kafka_0_data:/bitnami/kafka                     # Хранилище данных Kafka
     networks:
@@ -95,7 +95,7 @@ services:
       CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL:  'http://schema-registry:8081/'
       # Export JMX metrics to :9876/metrics for Prometheus
       KAFKA_JMX_PORT: '9875'
-      KAFKA_OPTS: "-javaagent:/kafka-connect/jars/jmx_prometheus_javaagent-0.15.0.jar=9876:/kafka-connect/kafka-connect.yml"
+      KAFKA_OPTS: "-javaagent:/kafka-connect/jars/jmx_prometheus_javaagent-0.15.0.jar=9876:/kafka-connect/jars/kafka-connect.yml"
       # Read connection password from file
       CONNECT_CONFIG_PROVIDERS: "file"
       CONNECT_CONFIG_PROVIDERS_FILE_CLASS: "org.apache.kafka.common.config.provider.FileConfigProvider"

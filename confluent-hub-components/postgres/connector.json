@@ -7,7 +7,7 @@
   "database.password": "postgres-pw",
   "database.dbname": "customers",
   "database.server.name": "customers",
-  "table.whitelist": "public.users",
+  "table.whitelist": ["public.users", "public.orders"],
   "transforms": "unwrap",
   "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
   "transforms.unwrap.drop.tombstones": "false",
